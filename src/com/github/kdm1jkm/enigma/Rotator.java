@@ -46,8 +46,13 @@ public class Rotator {
         return (char) push(transformed, -rotated, 'A', ALPHABET_LENGTH);
     }
 
-    public void rotate() {
+    /***
+     * rotate self once.
+     * @return true if rotation is reset to 0.
+     */
+    public boolean rotate() {
         rotated = push(rotated, -1, 0, ALPHABET_LENGTH);
+        return rotated == 0;
     }
 
     public char getRotation() {
