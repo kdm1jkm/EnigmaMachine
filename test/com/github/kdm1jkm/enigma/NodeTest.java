@@ -2,14 +2,13 @@ package com.github.kdm1jkm.enigma;
 
 import org.junit.jupiter.api.Test;
 
-import static com.github.kdm1jkm.enigma.Node.makeNode;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NodeTest {
 
     @Test
-    void node(){
-        Node<Character> node1 = new Node<>('a','b');
+    void node() {
+        Node<Character> node1 = new Node<>('a', 'b');
         Node<Character> node2 = node1.getOther();
 
         assertEquals(node1, node2.getOther());

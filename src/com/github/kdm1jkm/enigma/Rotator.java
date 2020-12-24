@@ -35,20 +35,20 @@ public class Rotator {
         }
     }
 
-    private int push(int num, int push, int start, int len) {
-        return ((num + len + push - start) % len) + start;
+    private int push(int num, int push, int start) {
+        return ((num + ALPHABET_LENGTH + push - start) % ALPHABET_LENGTH) + start;
     }
 
     public char convertForward(char ch) {
-        char pushed = (char) push(ch, rotated, 'A', ALPHABET_LENGTH);
+        char pushed = (char) push(ch, rotated, 'A');
         Character transformed = forward.get(pushed).getOther().value;
-        return (char) push(transformed, -rotated, 'A', ALPHABET_LENGTH);
+        return (char) push(transformed, -rotated, 'A');
     }
 
     public char convertBackward(char ch) {
-        char pushed = (char) push(ch, rotated, 'A', ALPHABET_LENGTH);
+        char pushed = (char) push(ch, rotated, 'A');
         Character transformed = backward.get(pushed).getOther().value;
-        return (char) push(transformed, -rotated, 'A', ALPHABET_LENGTH);
+        return (char) push(transformed, -rotated, 'A');
     }
 
     /***
@@ -56,7 +56,7 @@ public class Rotator {
      * @return true if rotation is reset to 0.
      */
     public boolean rotate() {
-        rotated = push(rotated, -1, 0, ALPHABET_LENGTH);
+        rotated = push(rotated, -1, 0);
         return rotated == 0;
     }
 

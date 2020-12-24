@@ -4,5 +4,6 @@ public class Constants {
     public static final int ALPHABET_LENGTH = 26;
 
 
-    private Constants() {}
+    private Constants() {
+    }
 }

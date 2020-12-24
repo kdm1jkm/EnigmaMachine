@@ -32,7 +32,7 @@ public class Reflector {
         }
     }
 
-    public char convert(char ch){
+    public char convert(char ch) {
         return valueToNode.get(ch).getOther().value;
     }
 }
