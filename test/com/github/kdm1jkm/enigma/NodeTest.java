@@ -9,7 +9,7 @@ class NodeTest {
 
     @Test
     void node(){
-        Node<Character> node1 = makeNode('a','b');
+        Node<Character> node1 = new Node<>('a','b');
         Node<Character> node2 = node1.getOther();
 
         assertEquals(node1, node2.getOther());
