@@ -24,7 +24,7 @@ public class Rotator {
                 throw new IllegalArgumentException();
             poppedChar.add(ch);
 
-            Node<Character> node = new Node((char) ('A' + i), ch);
+            Node<Character> node = new Node<>((char) ('A' + i), ch);
             forward.put(node.value, node);
             backward.put(node.getOther().value, node.getOther());
         }
