@@ -1,13 +1,18 @@
 package com.github.kdm1jkm.enigma;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static com.github.kdm1jkm.enigma.Constants.ALPHABET_LENGTH;
 
 public class Rotator {
+    public static final List<String> ROTATOR_EXAMPLE = Arrays.asList(
+            "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+            "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+            "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+            "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+            "VZBRGITYUPSDNHLXAWMJQOFECK"
+    );
+
     private final Map<Character, Node<Character>> forward = new HashMap<>();
     private final Map<Character, Node<Character>> backward = new HashMap<>();
     private int rotated = 0;
