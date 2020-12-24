@@ -37,6 +37,16 @@ public class MachineBody {
         return result;
     }
 
+    public String convert(String str) {
+        StringBuilder result = new StringBuilder();
+
+        for (char ch : str.toCharArray()) {
+            result.append(convert(ch));
+        }
+
+        return result.toString();
+    }
+
     public void deletePlug(char ch) {
         board.deletePlug(ch);
     }
@@ -44,7 +54,6 @@ public class MachineBody {
     public void addPlug(char c1, char c2) {
         board.addPlug(c1, c2);
     }
-
 
 }
 
