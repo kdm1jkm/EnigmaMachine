@@ -8,9 +8,9 @@ public class MachineBody {
     final PlugBoard board;
     final List<Rotator> rotators;
 
-    public MachineBody(String reflectMapping, List<String> rotatorMappings) {
+    public MachineBody(String plugBoardMapping, String reflectMapping, List<String> rotatorMappings, List<Character> rotatorSettings) {
         reflector = new Reflector(reflectMapping);
-        board = new PlugBoard();
+        board = new PlugBoard(plugBoardMapping);
         rotators = new ArrayList<>();
         for (String s : rotatorMappings) {
             rotators.add(new Rotator(s));

@@ -1,7 +1,17 @@
 package com.github.kdm1jkm.enigma;
 
 public class PlugBoard {
+    public static final String EXAMPLE = "AJDLCNEHGB";
     private final char[] plugs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+
+    public PlugBoard() {
+    }
+
+    public PlugBoard(String mapping) {
+        for (int i = 0; i < mapping.length() / 2; i++) {
+            addPlug(mapping.charAt(i * 2), mapping.charAt(i * 2 + 1));
+        }
+    }
 
     public String convert(String str) {
         StringBuilder result = new StringBuilder();
