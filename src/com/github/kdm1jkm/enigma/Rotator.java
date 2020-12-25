@@ -5,7 +5,7 @@ import java.util.*;
 import static com.github.kdm1jkm.enigma.Constants.ALPHABET_LENGTH;
 
 public class Rotator {
-    public static final List<String> ROTATOR_EXAMPLE = Arrays.asList(
+    public static final List<String> ROTATOR_EXAMPLES = Arrays.asList(
             "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
             "AJDKSIRUXBLHWTMCQGZNPYFVOE",
             "BDFHJLCPRTXVZNYEIWGAKMUSQO",
