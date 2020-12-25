@@ -12,8 +12,11 @@ public class MachineBody {
         reflector = new Reflector(reflectMapping);
         board = new PlugBoard(plugBoardMapping);
         rotators = new ArrayList<>();
-        for (String s : rotatorMappings) {
-            rotators.add(new Rotator(s));
+        for (int i = 0; i < rotatorMappings.size(); i++) {
+            String s = rotatorMappings.get(i);
+            Rotator rotator = new Rotator(s);
+            rotators.add(rotator);
+            rotator.setRotation(rotatorSettings.get(i));
         }
     }
 
