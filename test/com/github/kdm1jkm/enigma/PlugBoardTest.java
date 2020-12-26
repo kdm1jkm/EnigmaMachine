@@ -18,7 +18,7 @@ class PlugBoardTest {
     @Test
     void convertChar() {
         PlugBoard board = new PlugBoard();
-        for (char ch : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray()) {
+        for (char ch : Constants.ALL_ALPHABET.toCharArray()) {
             assertEquals(ch, board.convert(ch));
         }
     }

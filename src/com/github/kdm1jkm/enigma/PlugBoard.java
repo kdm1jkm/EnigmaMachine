@@ -2,7 +2,7 @@ package com.github.kdm1jkm.enigma;
 
 public class PlugBoard {
     public static final String EXAMPLE = "AJDLCNEHGB";
-    private final char[] plugs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    private final char[] plugs = Constants.ALL_ALPHABET.toCharArray();
 
     public PlugBoard() {
     }
