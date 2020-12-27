@@ -26,73 +26,17 @@ public class Main {
         switch (args[0]) {
             case "M":
             case "Manual": {
-                String filename = args[1];
-                String plugBoard;
-                String reflector;
-                List<String> rotators;
-                String rotatorSorts;
-                String rotatorInit;
-                try (FileInputStream inputStream = new FileInputStream(filename)) {
-                    Scanner scanner = new Scanner(inputStream);
-
-                    plugBoard = scanner.nextLine();
-                    reflector = scanner.nextLine();
-                    rotators = new ArrayList<>();
-                    while (scanner.hasNext()) {
-                        rotators.add(scanner.nextLine());
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    return;
-                }
-                rotatorSorts = args[2];
-                rotatorInit = args[3];
-                body = getMachineBody(plugBoard, reflector, rotators, rotatorSorts, rotatorInit);
+                body = initializeManual(args);
                 break;
             }
             case "E":
             case "Example": {
-                String plugBoard;
-                String reflector;
-                List<String> rotators;
-                String rotatorSorts;
-                String rotatorInit;
-                plugBoard = PlugBoard.EXAMPLE;
-                reflector = Reflector.EXAMPLE;
-                rotators = Rotator.ROTATOR_EXAMPLES;
-
-                rotatorSorts = args[1];
-                rotatorInit = args[2];
-                body = getMachineBody(plugBoard, reflector, rotators, rotatorSorts, rotatorInit);
+                body = initializeExample(args);
                 break;
             }
             case "C":
             case "Create": {
-                try (PrintWriter writer = new PrintWriter(new FileOutputStream(args[1]))) {
-                    Random random = new Random();
-
-                    // PlugBoard
-                    // from 0 to 13
-                    int plugBoardNum = random.nextInt(14);
-                    writer.print(getShuffledAlphabets().substring(0, plugBoardNum * 2));
-                    writer.print('\n');
-
-                    // Reflector
-                    writer.print(getShuffledAlphabets());
-                    writer.print('\n');
-
-                    //Rotator
-                    int rotatorNum = Integer.parseInt(args[2]);
-                    for (int i = 0; i < rotatorNum; i++) {
-                        writer.print(getShuffledAlphabets());
-                        writer.print('\n');
-                    }
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    System.out.println("Can't make file.");
-                    System.exit(0);
-                    return;
-                }
+                createMachine(args);
                 System.exit(0);
                 return;
             }
@@ -108,9 +52,8 @@ public class Main {
             return;
         }
 
+        Scanner scanner = new Scanner(System.in);
         while (true) {
-            Scanner scanner = new Scanner(System.in);
-
             String s = scanner.nextLine();
             if (s.startsWith("/"))
                 return;
@@ -121,6 +64,77 @@ public class Main {
             }
             System.out.print("\n");
         }
+    }
+
+    private static void createMachine(String[] args) {
+        try (PrintWriter writer = new PrintWriter(new FileOutputStream(args[1]))) {
+            Random random = new Random();
+
+            // PlugBoard
+            // from 0 to 13
+            int plugBoardNum = random.nextInt(14);
+            writer.print(getShuffledAlphabets().substring(0, plugBoardNum * 2));
+            writer.print('\n');
+
+            // Reflector
+            writer.print(getShuffledAlphabets());
+            writer.print('\n');
+
+            //Rotator
+            int rotatorNum = Integer.parseInt(args[2]);
+            for (int i = 0; i < rotatorNum; i++) {
+                writer.print(getShuffledAlphabets());
+                writer.print('\n');
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("Can't make file.");
+            System.exit(0);
+        }
+    }
+
+    private static MachineBody initializeExample(String[] args) {
+        MachineBody body;
+        String plugBoard;
+        String reflector;
+        List<String> rotators;
+        String rotatorSorts;
+        String rotatorInit;
+        plugBoard = PlugBoard.EXAMPLE;
+        reflector = Reflector.EXAMPLE;
+        rotators = Rotator.ROTATOR_EXAMPLES;
+
+        rotatorSorts = args[1];
+        rotatorInit = args[2];
+        body = getMachineBody(plugBoard, reflector, rotators, rotatorSorts, rotatorInit);
+        return body;
+    }
+
+    private static MachineBody initializeManual(String[] args) {
+        MachineBody body;
+        String filename = args[1];
+        String plugBoard;
+        String reflector;
+        List<String> rotators;
+        String rotatorSorts;
+        String rotatorInit;
+        try (FileInputStream inputStream = new FileInputStream(filename)) {
+            Scanner scanner = new Scanner(inputStream);
+
+            plugBoard = scanner.nextLine();
+            reflector = scanner.nextLine();
+            rotators = new ArrayList<>();
+            while (scanner.hasNext()) {
+                rotators.add(scanner.nextLine());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        rotatorSorts = args[2];
+        rotatorInit = args[3];
+        body = getMachineBody(plugBoard, reflector, rotators, rotatorSorts, rotatorInit);
+        return body;
     }
 
     private static MachineBody getMachineBody(String plugBoard, String reflector, List<String> rotators, String rotatorSorts, String rotatorInit) {

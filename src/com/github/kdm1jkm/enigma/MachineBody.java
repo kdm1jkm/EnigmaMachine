@@ -50,13 +50,5 @@ public class MachineBody {
         return result.toString();
     }
 
-    public void deletePlug(char ch) {
-        board.deletePlug(ch);
-    }
-
-    public void addPlug(char c1, char c2) {
-        board.addPlug(c1, c2);
-    }
-
 }
 

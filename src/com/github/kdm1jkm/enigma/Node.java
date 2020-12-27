@@ -14,10 +14,6 @@ public class Node<T> {
         this.other = other;
     }
 
-    public static <T> Node<T> makeNode(T value1, T value2) {
-        return new Node<>(value1, value2);
-    }
-
     public Node<T> getOther() {
         return other;
     }

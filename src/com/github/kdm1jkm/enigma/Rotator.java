@@ -60,10 +60,6 @@ public class Rotator {
         return rotated == 0;
     }
 
-    public char getRotation() {
-        return (char) ('A' + rotated);
-    }
-
     public void setRotation(char ch) {
         rotated = ch - 'A';
     }
